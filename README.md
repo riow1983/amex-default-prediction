@@ -1,5 +1,6 @@
 # amex-default-prediction
-[amex-default-prediction][name]
+[name]: amex-default-prediction  
+
 ![header](https://github.com/riow1983/[name]/blob/main/png/header.png)<br>
 https://www.kaggle.com/competitions/amex-default-prediction<br>
 どんなコンペ?:<br>
