@@ -1,7 +1,6 @@
 # amex-default-prediction
-[name]: amex-default-prediction  
 
-![header](https://github.com/riow1983/[name]/blob/main/png/header.png)<br>
+![header](https://github.com/riow1983/amex-default-prediction/blob/main/png/header.png)<br>
 https://www.kaggle.com/competitions/amex-default-prediction<br>
 どんなコンペ?:<br>
 開催期間:<br>
@@ -120,7 +119,7 @@ https://wandb.ai/riow1983/amex-default-prediction?workspace=user-riow1983
 <br>
 <br>
 <br>
-Back to [Top](#[name])
+Back to [Top](#amex-default-prediction)
 
 
 
