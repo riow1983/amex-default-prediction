@@ -42,6 +42,111 @@ https://wandb.ai/riow1983/amex-default-prediction?workspace=user-riow1983
 ***
 ## 参考資料
 #### Snipets
+```python
+comp_name = "amex-default-prediction"
+nb_name = 'kagglenb003-adversarial-validation'
+
+import sys
+import os
+from pathlib import Path
+
+if "google.colab" in sys.modules:
+    from google.colab import drive
+    drive.mount("/content/drive")
+    base = f"/content/drive/MyDrive/colab_notebooks/kaggle/{comp_name}/notebooks"
+    %cd {base}
+
+KAGGLE_ENV = True if 'KAGGLE_URL_BASE' in set(os.environ.keys()) else False
+INPUT_DIR = Path('../input/')
+
+if KAGGLE_ENV:
+    OUTPUT_DIR = Path('')
+else:
+    !mkdir ../input/{nb_name}
+    OUTPUT_DIR = INPUT_DIR / nb_name
+```
+<br>
+
+```python
+class CFG(object):
+    def __init__(self):
+        self.debug = False
+        self.params = {
+            'loss_function' : 'Logloss',
+            'eval_metric' : 'AUC',
+            'learning_rate': 0.08,
+            'num_boost_round': 5000,
+            'early_stopping_rounds': 100,
+            'random_state': 127,
+            'task_type': 'GPU'
+        }
+        self.target = 'private'
+    
+        self.drop_cols = ['S_2', 'month', 'customer_ID', 'fold', self.target]
+
+        self.num_rows = None
+        if self.debug:
+            self.num_rows = 1000
+
+
+args = CFG()
+print(args.num_rows)
+```
+<br>
+
+```python
+# Install cudf on Colab
+# Credits to: 
+# https://colab.research.google.com/drive/1xnTpVS194BJ0pOPuxN4GOmypdu2RvwdH
+
+
+# Cell #0
+# This get the RAPIDS-Colab install files and test check your GPU.  Run this and the next cell only.
+# Please read the output of this cell.  If your Colab Instance is not RAPIDS compatible, it will warn you and give you remediation steps.
+!git clone https://github.com/rapidsai/rapidsai-csp-utils.git
+!python rapidsai-csp-utils/colab/env-check.py
+
+# Cell #1
+# This will update the Colab environment and restart the kernel.  Don't run the next cell until you see the session crash.
+!bash rapidsai-csp-utils/colab/update_gcc.sh
+import os
+os._exit(00)
+
+# Cell #2
+# This will install CondaColab.  This will restart your kernel one last time.  Run this cell by itself and only run the next cell once you see the session crash.
+import condacolab
+condacolab.install()
+
+# Cell #3
+# you can now run the rest of the cells as normal
+import condacolab
+condacolab.check()
+
+# Cell #4 (This will take about 15 minutes.)
+# Installing RAPIDS is now 'python rapidsai-csp-utils/colab/install_rapids.py <release> <packages>'
+# The <release> options are 'stable' and 'nightly'.  Leaving it blank or adding any other words will default to stable.
+!python rapidsai-csp-utils/colab/install_rapids.py stable
+import os
+os.environ['NUMBAPRO_NVVM'] = '/usr/local/cuda/nvvm/lib64/libnvvm.so'
+os.environ['NUMBAPRO_LIBDEVICE'] = '/usr/local/cuda/nvvm/libdevice/'
+os.environ['CONDA_PREFIX'] = '/usr/local'
+
+
+# Cell #5
+import cudf
+import cupy
+
+import cffi
+print(cffi.__version__)
+
+!pip uninstall cffi
+!pip install cffi==1.15.0
+
+import importlib
+importlib.reload(cffi)
+
+print(cffi.__version__)
+```
 <br>
 
 
