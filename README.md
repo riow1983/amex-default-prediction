@@ -213,7 +213,7 @@ print(cffi.__version__)
 <br>
 
 #### 2022-08-24
-結果はxxx/xxx (暫定) だった. <br>
+結果は3330/4874 (確定) だった. <br>
 ![private lb image](https://github.com/riow1983/amex-default-prediction/blob/main/png/result.png)
 <br>
 <br>
