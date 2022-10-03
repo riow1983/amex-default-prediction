@@ -219,6 +219,7 @@ print(cffi.__version__)
 <br>
 **どのように取り組み, 何を反省しているか**<br>
 テストデータがpublictとprivateに分かれているのはkaggleコンペの通例だが, 本コンペではホスト側の不注意なのか, 特定の日付けのデータポイントがprivateテストデータであるということがコンペの序盤から比較的簡単なprobingで明らかになってしまっていた. <br> この手の不具合はコンペに参加しないという選択の有力な理由になり得るが, 私は今回この不具合を利用する道を選んだ. Adversarial Validation に関する[公開ノートブック](https://www.kaggle.com/code/zakopur0/adversarial-validation-private-vs-public)に触発され, privateテストデータのinputsにより類似する学習データを選別し, その選別された学習データだけでモデルを訓練することで, privateテストデータにオーバーフィットさせようと試みた. しかしその結果は意に反し, そのような選別をせずに訓練したほうがprivate LBのスコアも良いという結果に終わってしまい, 大幅にシェイクダウンしてしまった.<br>
+上位チーム解法を見ると, 樹木モデルとNNの組み合わせが本コンペでも有効であったことが分かった. 特に14thのChris Deotteによる解法は分かりやすく, 樹木モデルによるKDをNNのinputsに加えたものが有効であることが[明快に説明](https://www.kaggle.com/competitions/amex-default-prediction/discussion/347641)されていた. しかしながら言うは易し行うは難しで, NNモデルは100モデル (computed with 100 nested folds, 5 seeds) で構成されているとのことでとても中途半端な計算環境しか持ち合わせていないカタギが真似できる代物では無いと言うことも分かった. とは言えここまで多数のモデルを作らずとも, 樹木系モデルによるKDをNNのinputsに加えると言う方針自体は有効と思われ, 今後様々な局面で真似していきたいと思う.<br>
 **My submissions について**<br>
 **xxxについて**<br>
 <br>
