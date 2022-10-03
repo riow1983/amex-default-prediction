@@ -218,6 +218,7 @@ print(cffi.__version__)
 <br>
 <br>
 **どのように取り組み, 何を反省しているか**<br>
+テストデータがpublictとprivateに分かれているのはkaggleコンペの通例だが, 本コンペではホスト側の不注意なのか, 特定の日付けのデータポイントがprivateテストデータであるということがコンペの序盤から比較的簡単なprobingで明らかになってしまっていた. <br> この手の不具合はコンペに参加しないという選択の有力な理由になり得るが, 私は今回この不具合を利用する道を選んだ. Adversarial Validation に関する[公開ノートブック](https://www.kaggle.com/code/zakopur0/adversarial-validation-private-vs-public)に触発され, privateテストデータのinputsにより類似する学習データを選別し, その選別された学習データだけでモデルを訓練することで, privateテストデータにオーバーフィットさせようと試みた. しかしその結果は意に反し, そのような選別をせずに訓練したほうがprivate LBのスコアも良いという結果に終わってしまい, 大幅にシェイクダウンしてしまった.<br>
 **My submissions について**<br>
 **xxxについて**<br>
 <br>
