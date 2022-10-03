@@ -214,7 +214,7 @@ print(cffi.__version__)
 
 #### 2022-08-24
 結果はxxx/xxx (暫定) だった. <br>
-![private lb image](https://github.com/riow1983/us-patent-phrase-to-phrase-matching/blob/main/png/result.png)
+![private lb image](https://github.com/riow1983/amex-default-prediction/blob/main/png/result.png)
 <br>
 <br>
 **どのように取り組み, 何を反省しているか**<br>
